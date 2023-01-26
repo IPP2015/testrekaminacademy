@@ -5,33 +5,26 @@ on:
       - 'main'
 
 jobs:
-  cypress-test:
+  # install:
+  # ....
+  cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node.js 16.15.1-chrome87-ff82
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Install cypress and verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
-      - name: Run Cypress tests
-        run: npm run test:chrome
-        continue-on-error: true
-
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
-      - name: Merge test reports
-        run: npm run combine:report
-
-      - name: Generate HTML report
-        run: npm run generate:report
-      
-      - name: Deploy report page to GitHub Page
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Download the build folders
+        uses: actions/download-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          name: build
+          path: build
+
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.x.x # use the explicit version number
+        with:
+          # Specify Browser since container image is compile with Firefox
+          browser: firefox
+          build: yarn build
