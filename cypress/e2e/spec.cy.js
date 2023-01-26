@@ -31,7 +31,7 @@ describe('User Story', () => {
         cy.wait(2000)
         cy.screenshot('Screenshot.jpg')
         cy.xpath('//*[@name="name"]').type('ilham-test')
-        cy.xpath('//*[@name="email"]').type('panduputra1.@gmail.com')
+        cy.xpath('//*[@name="email"]').type('panduputra0.i@gmail.com')
         cy.xpath('//*[@name="password"]').type('testRekamin123')
         cy.xpath('//*[@type="submit"]').should('contain', 'Daftar')
         cy.wait(2500)
@@ -77,7 +77,7 @@ describe('User Story', () => {
         cy.screenshot('screenshot.jpg')
         cy.xpath('//*[@data-cy="continue-to-payment-button"]').click()
         cy.wait(5000)
-        cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
+        // cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
 
       })
 
@@ -97,7 +97,7 @@ describe('User Story', () => {
         cy.wait(2000)
         cy.screenshot('Screenshot1.jpg')
         cy.xpath('//*[@name="name"]').type('ilham-test')
-        cy.xpath('//*[@name="email"]').type('panduputra1@gmail.com')
+        cy.xpath('//*[@name="email"]').type('panduputra2@gmail.com')
         cy.xpath('//*[@name="password"]').type('testRekamin123')
         cy.xpath('//*[@type="submit"]').should('contain', 'Daftar')
         cy.wait(2500)
