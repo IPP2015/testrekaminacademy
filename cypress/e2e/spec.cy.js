@@ -1,5 +1,4 @@
 require('cypress-xpath')
-require('cypress-plugin-tab')
 
 describe('User Story', () => {
     // it('Auto', () => {
@@ -15,24 +14,27 @@ describe('User Story', () => {
     // })
 
 
-  it('Skenario1)', () => {
-    cy.visit('https://web-staging.rakamin.com/virtual-internship-experience/explore')
-    cy.viewport(1280, 720)
-        cy.location().should((url) => {
-            expect(url.toString()).to.eq('https://web-staging.rakamin.com/virtual-internship-experience/explore')
-        })
-        cy.screenshot('Screenshot.jpg')
-        // cy.xpath('//*[contains(@class ,"sc-iEJjrp gokvza")]').click().click()
-        cy.get("button.sc-fnGiBr.cpkCOd.sc-dmZihf.laHHlH").first().dblclick()
-        cy.wait(200)
-        cy.location().should((url) => {
-            expect(url.toString()).to.eq('https://web-staging.rakamin.com/register')
-        })
-        cy.wait(2000)
-        cy.screenshot('Screenshot.jpg')
+    it('Skenario1)', () => {
+        cy.visit('https://web-staging.rakamin.com/virtual-internship-experience/explore')
+        cy.viewport(1280, 720)
+            cy.location().should((url) => {
+                expect(url.toString()).to.eq('https://web-staging.rakamin.com/virtual-internship-experience/explore')
+            })
+            cy.screenshot('Screenshot.jpg')
+            // cy.xpath('//*[contains(@class ,"sc-iEJjrp gokvza")]').click().click()
+            cy.get("button.sc-fnGiBr.cpkCOd.sc-dmZihf.laHHlH").first().dblclick()
+            cy.wait(200)
+            cy.location().should((url) => {
+                expect(url.toString()).to.eq('https://web-staging.rakamin.com/register')
+            })
+            cy.wait(2000)
+            cy.screenshot('Screenshot.jpg')
         cy.xpath('//*[@name="name"]').type('ilham-test')
-        cy.xpath('//*[@name="email"]').type('panduputra2.i@gmail.com')
         cy.xpath('//*[@name="password"]').type('testRekamin123')
+        const mail = '@gmail.com'
+        let nama = 'panduput'
+        let random = Math.round(Math.random() * 2000)
+        cy.xpath('//*[@name="email"]').type(nama + random + mail)
         cy.xpath('//*[@type="submit"]').should('contain', 'Daftar')
         cy.wait(2500)
         cy.screenshot('Screenshot.jpg')
@@ -60,7 +62,7 @@ describe('User Story', () => {
         cy.xpath('//*[@data-cy="register-vix-button"]').click()
         cy.xpath('//*[@name="phone_number"]').type('085777641438')
         cy.xpath('//*[@name="linkedin_url"]').type('https://www.linkedin.com/in/ilham-pandu-putra-03658425b/')
-        cy.get('input[type=file]').selectFile("E:\\batch220\\Cypress\\testrakaminacademy\\cypress\\cv.pdf")
+        cy.get('input[type=file]').selectFile("\\cv.pdf")
         cy.xpath('//*[@data-cy="vix-info-source-option-7"]').click()
         cy.xpath('//*[@placeholder="Masukan platform media social lainnya..."]').should('be.visible')
         cy.xpath('//*[@placeholder="Masukan platform media social lainnya..."]').type('Tech in Asia Jobs')
@@ -79,9 +81,9 @@ describe('User Story', () => {
         cy.wait(5000)
         // cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
 
-      })
+    })
 
-      it('Skenario2', () => {
+    it('Skenario2', () => {
         cy.visit('https://web-staging.rakamin.com/virtual-internship-experience/explore')
     cy.viewport(1280, 720)
         cy.location().should((url) => {
@@ -97,12 +99,16 @@ describe('User Story', () => {
         cy.wait(2000)
         cy.screenshot('Screenshot1.jpg')
         cy.xpath('//*[@name="name"]').type('ilham-test')
-        cy.xpath('//*[@name="email"]').type('panduputra3@gmail.com')
         cy.xpath('//*[@name="password"]').type('testRekamin123')
+        const mail = '@gmail.com'
+        let nama = 'panduput1'
+        let random = Math.round(Math.random() * 2000)
+        cy.xpath('//*[@name="email"]').type(nama + random + mail)
         cy.xpath('//*[@type="submit"]').should('contain', 'Daftar')
         cy.wait(2500)
-        cy.screenshot('Screenshot1.jpg')
+        cy.screenshot('Screenshot.jpg')
         cy.xpath('//*[@type="submit"]').click()
+        cy.wait(2500)
         cy.screenshot('Screenshot1.jpg')
         cy.wait(5000)
         cy.visit('https://web-staging.rakamin.com/virtual-internship-experience/explore')
@@ -119,7 +125,7 @@ describe('User Story', () => {
         cy.xpath('//*[@data-cy="register-vix-button"]').click()
         cy.xpath('//*[@name="phone_number"]').type('085777641438')
         cy.xpath('//*[@name="linkedin_url"]').type('https://www.linkedin.com/in/ilham-pandu-putra-03658425b/')
-        cy.get('input[type=file]').selectFile("E:\\batch220\\Cypress\\testrakaminacademy\\cypress\\cv.pdf")
+        // cy.get('input[type=file]').selectFile("..\\cv.pdf")
         cy.xpath('//*[@data-cy="vix-info-source-option-7"]').click()
         cy.xpath('//*[@placeholder="Masukan platform media social lainnya..."]').should('be.visible')
         cy.xpath('//*[@placeholder="Masukan platform media social lainnya..."]').type('Tech in Asia Jobs')
@@ -137,8 +143,8 @@ describe('User Story', () => {
         cy.xpath('//*[@data-cy="continue-to-payment-button"]').click()
         cy.wait(5000)
        // cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
-      })
     })
-    
+})
+
 // // https://web-staging.rakamin.com/checkout
 // // 67d6ff950f8e8f16662e
