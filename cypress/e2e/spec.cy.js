@@ -1,20 +1,10 @@
 require('cypress-xpath')
 
 describe('User Story', () => {
-    // it('Auto', () => {
-    //     cy.request({
-    //         url: "https://https://web-staging.rakamin.com/register",
-    //         method: 'POST',
-    //         failOnStatusCode: false,
-    //         form: true,
-    //         body: {
-    //             user:{name: "ilham-test", email: "testqailh@gmail.com", password: "test123456"}
-    //         }
-    // }).then(res => cy.log(res.body.user.auth))
-    // })
-
-
-    it('Skenario1)', () => {
+      it('Skenario1)', () => {
+// //         cy.loginViaUi({ name: 'ilham-test',email: 'panduputra.ilham40000@email.com', password: 'testRekamin123' })
+// //         cy.visit("/")
+// //     })
         cy.visit('https://web-staging.rakamin.com/virtual-internship-experience/explore')
         cy.viewport(1280, 720)
         cy.location().should((url) => {
@@ -79,9 +69,10 @@ describe('User Story', () => {
         cy.screenshot('screenshot.jpg')
         cy.xpath('//*[@data-cy="continue-to-payment-button"]').click()
         cy.wait(5000)
-        cy.visit('https://checkout-staging.xendit.co/web/63d20c579a46c8387279223e')
+        //cy.go('back')
+        // cy.visit('https://checkout-staging.xendit.co/web/63d20c579a46c8387279223e')
         // cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
-
+        
     })
 
     it('Skenario2', () => {
@@ -118,10 +109,12 @@ describe('User Story', () => {
         cy.get('p.sc-zvsav.gvsewv').should('contain', 'Virtual Internship Experience VIP Access')
         cy.xpath('//*[@data-cy="continue-to-payment-button"]').click()
         cy.wait(5000)
-        cy.visit('https://checkout-staging.xendit.co/web/63d20c579a46c8387279223e')
-        // cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
+        //cy.go('back')
+        // cy.visit('https://checkout-staging.xendit.co/web/63d20c579a46c8387279223e')
+       // cy.get('p.test-white').tab({ ctrl: true }).should('have.text', 'You are in Test Mode and any transactions made are simulated and not real.')
+
     })
 })
 
-// // https://web-staging.rakamin.com/checkout
-// // 67d6ff950f8e8f16662e
+ // https://web-staging.rakamin.com/checkout
+ // 67d6ff950f8e8f16662e

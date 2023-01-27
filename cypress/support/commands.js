@@ -23,23 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add('login', () => { 
-
-    cy.request({
-
-      method: 'POST',
-
-      url: 'https://web-staging.rakamin.com/verification?token=67d6ff950f8e8f16662e',
-
-      form: true,
-
-      body: {
-
-        name: 'ilham-test',
-        email: 'panduputra.ilham@gmail.com',
-        password: 'testRekamin123'
-       }
-
-    });
-
-  })
+// Cypress.Commands.add('login', () => { 
+Cypress.Commands.add('loginViaUi', (user) => {
+  cy.session(
+    user,
+    () => {
+      cy.visit('https://web-staging.rakamin.com/register')
+      cy.xpath('//*[@name="name"]').type(user.fixture())
+      cy.xpath('//*[@name="email"]').type(user.fixture())
+      cy.xpath('//*[@name="password"]').type(user.fixture())
+      cy.xpath('//*[@type="submit"]')
+    },
+    {
+      validate: () => {
+        cy.getCookie('auth_key').should('exist')
+      },
+    }
+  )
+})
