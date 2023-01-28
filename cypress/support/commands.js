@@ -29,9 +29,9 @@ Cypress.Commands.add('loginViaUi', (user) => {
     user,
     () => {
       cy.visit('https://web-staging.rakamin.com/register')
-      cy.xpath('//*[@name="name"]').type(user.fixture())
-      cy.xpath('//*[@name="email"]').type(user.fixture())
-      cy.xpath('//*[@name="password"]').type(user.fixture())
+      cy.xpath('//*[@name="name"]').type(user.name)
+      cy.xpath('//*[@name="email"]').type(user.email)
+      cy.xpath('//*[@name="password"]').type(user.password)
       cy.xpath('//*[@type="submit"]')
     },
     {
