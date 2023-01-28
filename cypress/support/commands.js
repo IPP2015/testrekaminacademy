@@ -32,7 +32,7 @@ Cypress.Commands.add('loginViaUi', (user) => {
       cy.xpath('//*[@name="name"]').type(user.name)
       cy.xpath('//*[@name="email"]').type(user.email)
       cy.xpath('//*[@name="password"]').type(user.password)
-      cy.xpath('//*[@type="submit"]')
+      cy.xpath('//*[@type="submit"]').click()
     },
     {
       validate: () => {
